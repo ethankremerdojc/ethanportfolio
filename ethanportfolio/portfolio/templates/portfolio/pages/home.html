@@ -1,0 +1,17 @@
+{% extends 'portfolio/base.html' %}
+{% load static %}
+
+{% block title %}Ethan Kremer - Home{% endblock title %}
+{% block description %}Ethan Kremer's Description{% endblock description %}
+
+{% block header %}
+    <link rel="stylesheet" href="{% static 'portfolio/css/main.css' %}">
+    {% include 'portfolio/components/main_header.html' %}
+{% endblock header %}
+
+{% block body %}body
+{% endblock body %}
+
+{% block footer %}
+    {% include 'portfolio/components/main_footer.html' %}
+{% endblock footer %}

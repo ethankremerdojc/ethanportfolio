@@ -4,4 +4,4 @@ from django.http import HttpResponse
 
 # Create your views here.
 def home(request, *args, **kwargs):
-    return HttpResponse("HENLO")
+    return render(request, 'portfolio/pages/home.html', {})

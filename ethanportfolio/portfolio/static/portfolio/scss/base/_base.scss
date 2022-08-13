@@ -1,0 +1,9 @@
+@forward 'footer';
+@forward 'header';
+
+@use '../utilities/utilities';
+
+body {
+    padding-top: utilities.$headerHeight;
+    padding-bottom: utilities.$footerHeight;
+}
