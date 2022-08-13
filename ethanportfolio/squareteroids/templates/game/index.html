@@ -1,3 +1,4 @@
+{% load static %}
 <html>
     <head>
         <script>
@@ -11,8 +12,8 @@
         {{ difficulties|json_script:"difficulties" }}
         {{ highest_scores|json_script:"highestScores" }}
         
-        <link href="/static/css/main.css" rel="stylesheet">
-        <script defer src="/static/js/index.js" type="module"></script>
+        <link href="{% static 'squareteroids/css/main.css' %}" rel="stylesheet">
+        <script defer src="{% static 'squareteroids/js/index.js' %}" type="module"></script>
         <title>Square-teroids</title>
     </head>
     <body>

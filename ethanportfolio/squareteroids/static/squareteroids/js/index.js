@@ -111,7 +111,7 @@ const setHighestScores = (highestScores, selectedDifficulty) => {
 }
 
 const sendPostData = (data) => {
-    fetch("/post", {
+    fetch("/squareteroids/post", {
         method: "POST",
         headers: {'Content-Type': 'application/json', 'X-CSRFToken': csrftoken}, 
         body: JSON.stringify(data)
