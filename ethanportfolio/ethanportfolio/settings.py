@@ -15,12 +15,6 @@ DEFAULT_EMAIL_SUBJECT = "Message from Ethan Kremer"
 
 
 
-
-
-
-
-
-
 # Application definition
 
 INSTALLED_APPS = [

@@ -57,6 +57,16 @@ function getCookie(name) {
     return cookieValue;
 }
 
+function makeFullScreen(elem) {
+    if (elem.requestFullscreen) {
+      elem.requestFullscreen();
+    } else if (elem.webkitRequestFullscreen) { /* Safari */
+      elem.webkitRequestFullscreen();
+    } else if (elem.msRequestFullscreen) { /* IE11 */
+      elem.msRequestFullscreen();
+    }
+  }
+
 export {
-    randBool, randWholeNum, randInt, getPageDimensions, elementsOverlap, randItem, getCookie
+    randBool, randWholeNum, randInt, getPageDimensions, elementsOverlap, randItem, getCookie, makeFullScreen
 }

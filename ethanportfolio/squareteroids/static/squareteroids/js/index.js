@@ -6,19 +6,23 @@ import { Config } from "./utils/config.js";
 import { Stats } from "./assets/ui/stats.js";
 import * as utils from "./utils/utils.js";
 
-const getNewEnemy = (speedFactor) => {
+function rand(min, max) {
+    return parseInt(Math.random() * (max-min+1), 10) + min;
+}
 
-    const colors = [
-        "red",
-        "green",
-        "blue",
-        "yellow"
-    ]
+function get_random_color() {
+    var h = rand(1, 360); // color hue between 1 and 360
+    var s = rand(50, 100); // saturation 30-100%
+    var l = rand(30, 75); // lightness 30-70%
+    return 'hsl(' + h + ',' + s + '%,' + l + '%)';
+}
+
+const getNewEnemy = (speedFactor) => {
 
     var enemy = new Enemy(
         utils.randWholeNum(70) + 16,
-        utils.randItem(colors)
-        );
+        get_random_color()
+    );
 
     var randPos = enemy.getRandomPointOnEdgeOfScreen(pageDimensions);
     enemy.obj = enemy.getDocObject(randPos.left, randPos.top);
@@ -55,7 +59,6 @@ function runGame(pageDimensions) {
     const game = new Game();
     game.obj = game.getDocObject();
     document.body.append(game.obj);
-
     var selectedDifficulty = document.getElementById("difficulty").value;
 
     const config = new Config(difficulties, selectedDifficulty);
@@ -132,6 +135,11 @@ const handleDeath = (game) => {
     var deathSound = new Audio("static/sounds/dead.mp3");
     deathSound.volume = 0.4;
     deathSound.play();
+
+    var username = document.getElementById('usernameInput').value;
+    if (!username) {
+        username = "anonymous"
+    }
 
     sendPostData({
         'username': username, 
@@ -235,21 +243,22 @@ const playSong = () => {
 }
 
 window.onresize = () => {
+    var fullScreenButton = document.getElementById("fullScreen");
+
+    if (window.innerHeight == screen.height) {
+        fullScreenButton.style.display = "none";
+    } else {
+        fullScreenButton.style.display = "block";
+    }
+
     pageDimensions = utils.getPageDimensions();
     placeStartButton();
     gameRunning = false;
 }
+
 const csrftoken = utils.getCookie('csrftoken');
 var pageDimensions = utils.getPageDimensions();
 var gameRunning = false;
 var songPlaying = false;
 
 placeStartButton();
-
-console.log(difficulties)
-console.log(highestScores)
-
-var username = prompt("What is your username?");
-if (!username) {
-    username = "anonymous"
-}
