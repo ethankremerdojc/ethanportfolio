@@ -7,7 +7,7 @@ class Player {
         var top = parseInt(this.obj.style.top);
         var left = parseInt(this.obj.style.left);
 
-        var shadow = new PlayerShaddow(top, left, 80);
+        var shadow = new PlayerShaddow(top, left, 120);
         return shadow;
     }
 
