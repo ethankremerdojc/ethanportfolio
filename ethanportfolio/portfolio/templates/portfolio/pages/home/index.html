@@ -10,9 +10,13 @@
 {% endblock header %}
 
 {% block body %}
-<section id="portfolio-header">
-    Ethan Kremer's Portfolio
-</section>
+<div class="content">
+    <div class="first-page-header-wrapper">
+        <h1 class="first-page-header">Hello! My name is Ethan Kremer.</h1>
+    </div>
+    {% include 'portfolio/pages/home/squareteroids_button.html' %}
+
+</div>
 {% endblock body %}
 
 {% block footer %}

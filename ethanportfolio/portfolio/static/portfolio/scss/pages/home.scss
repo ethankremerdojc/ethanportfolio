@@ -1,0 +1,96 @@
+body {
+    color: white;
+}
+
+.content {
+    background: linear-gradient(to bottom right, rgb(255 255 255), rgb(211 211 211));
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.first-page-header-wrapper {
+    position: absolute;
+    width: 100%;
+    top: 30vh;
+    display: grid;
+    place-items: center;
+}
+  
+.first-page-header {
+    width: 31ch;
+    animation: typing 2s steps(31), blink .5s step-end infinite alternate;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 3px solid;
+    font-family: monospace;
+    font-size: 2em;
+    -webkit-text-stroke: 1px #5a5a5a; /* width and color */
+    font-size: 44px;
+}
+
+.squareteroids-wrapper {
+    display: grid;
+    place-items: center;
+    position: absolute;
+    top: 60vh;
+    width: 100%;
+}
+
+.squareteroids {
+    align-self: center;
+    height: 220px;
+    width: 220px;
+    display: grid;
+    place-items: center;
+    background-color: white;
+    border-radius: 30px;
+    text-decoration: none;
+    
+    & h2 {
+        background: none;
+        font-size: 24px;
+        outline: inherit;
+        color: white;
+        position: relative;
+        top: -71px;
+        left: -25px;
+    }
+    
+    &::before {
+        content: "";
+        height: 220px;
+        width: 220px;
+        background-image: url("/static/portfolio/images/squareteroids-background.png");
+        background-size: 220px 220px;
+        border-radius: 30px;
+        transform: translate(-3%, -3%);
+    }
+
+    &::before:hover {
+        animation: lift 1s ease-in;
+    }
+}
+
+@keyframes lift {
+    from {
+        transform: translate(-2%, -2%)
+    } to {
+        transform: translate(-4%, -4%)
+    }
+}
+
+
+@keyframes typing {
+    from {
+      width: 0
+    }
+}
+      
+@keyframes blink {
+    50% {
+      border-color: transparent
+    }
+}
