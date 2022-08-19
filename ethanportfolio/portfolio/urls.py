@@ -7,8 +7,3 @@ from django.conf import settings
 urlpatterns = [
     path('', views.home, name='home'),
 ]
-
-# urlpatterns += static(
-#     "static", 
-#     document_root=settings.STATIC_ROOT + "/portfolio"
-# )

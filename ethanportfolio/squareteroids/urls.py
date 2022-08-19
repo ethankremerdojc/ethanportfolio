@@ -8,8 +8,3 @@ urlpatterns = [
     path('', views.squareteroids, name='game'),
     path('post', views.post_score, name='post_score')
 ]
-
-# urlpatterns += static(
-#     "static", 
-#     document_root=settings.STATIC_ROOT + "/squareteroids"
-# )

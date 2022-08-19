@@ -132,7 +132,7 @@ const handleDeath = (game) => {
     console.log("Player died...")
     document.querySelector('body').style.cursor = "default";
         
-    var deathSound = new Audio("static/sounds/dead.mp3");
+    var deathSound = new Audio("/static/squareteroids/sounds/dead.mp3");
     deathSound.volume = 0.4;
     deathSound.play();
 
@@ -234,7 +234,7 @@ function placeStartButton() {
 
 const playSong = () => {
     if (!songPlaying) {
-        var song = new Audio("static/sounds/wash-away.mp3");
+        var song = new Audio("/static/squareteroids/sounds/wash-away.mp3");
         song.volume = 0.4;
         song.loop = true;
         song.play()
