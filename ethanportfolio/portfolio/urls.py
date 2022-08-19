@@ -8,7 +8,7 @@ urlpatterns = [
     path('', views.home, name='home'),
 ]
 
-urlpatterns += static(
-    "static", 
-    document_root=settings.STATIC_ROOT + "/portfolio"
-)
+# urlpatterns += static(
+#     "static", 
+#     document_root=settings.STATIC_ROOT + "/portfolio"
+# )
