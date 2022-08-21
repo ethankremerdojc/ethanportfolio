@@ -112,7 +112,6 @@ function runGame(pageDimensions) {
         })
     }).then((response) => response.json())
     .then((data) => {
-        console.log(data)
         game.scoreId = data.id;
         gameRunning = true;
         update(game)
@@ -145,12 +144,10 @@ const setHighestScores = (highestScores, selectedDifficulty) => {
 const timeStrToNum = (timeStr) => {
     var numStr = timeStr.replaceAll(':', '');
     var result = parseInt(numStr);
-    console.log(numStr, result)
     return result
 }
 
 const handleDeath = (game) => {
-    console.log("Player died...")
     document.querySelector('body').style.cursor = "default";
         
     var deathSound = new Audio("/static/squareteroids/sounds/dead.mp3");
@@ -171,7 +168,6 @@ const handleDeath = (game) => {
     }).then((response) => response.json())
 
     .then((data) => {
-        console.log("End data", data)
         var highScoreBlock = document.getElementById('highScore');
         var valBlock = highScoreBlock.querySelector(".value");
 
