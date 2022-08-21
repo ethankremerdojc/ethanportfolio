@@ -58,6 +58,7 @@ function runGame(pageDimensions) {
     document.getElementById('highScores').style.visibility = "hidden";
     document.getElementById('stats').style.visibility = "visible";
     document.getElementById('stopwatch').style.visibility = "visible";
+
     // FIELD
     const game = new Game();
     game.obj = game.getDocObject();
@@ -99,8 +100,23 @@ function runGame(pageDimensions) {
     // score block
     setHighestScores(highestScores, selectedDifficulty)
 
-    gameRunning = true;
-    update(game)
+    var username = document.getElementById('usernameInput').value;
+    if (!username) {username = "anonymous"}
+
+    fetch("/squareteroids/start", {
+        method: "POST",
+        headers: {'Content-Type': 'application/json', 'X-CSRFToken': csrftoken}, 
+        body: JSON.stringify({
+            username: username,
+            difficulty: selectedDifficulty,
+        })
+    }).then((response) => response.json())
+    .then((data) => {
+        console.log(data)
+        game.scoreId = data.id;
+        gameRunning = true;
+        update(game)
+    });
 }
 
 const setHighestScores = (highestScores, selectedDifficulty) => {
@@ -126,14 +142,6 @@ const setHighestScores = (highestScores, selectedDifficulty) => {
     timeBlock.innerHTML = highestScores[selectedDifficulty].time;
 }
 
-const sendPostData = (data) => {
-    fetch("/squareteroids/post", {
-        method: "POST",
-        headers: {'Content-Type': 'application/json', 'X-CSRFToken': csrftoken}, 
-        body: JSON.stringify(data)
-    })
-}
-
 const timeStrToNum = (timeStr) => {
     var numStr = timeStr.replaceAll(':', '');
     var result = parseInt(numStr);
@@ -154,38 +162,40 @@ const handleDeath = (game) => {
         username = "anonymous"
     }
 
-    sendPostData({
-        'username': username, 
-        'time': game.timer.object.innerHTML,
-        'enemy_speed': game.config.enemySpeed,
-        'enemy_spawn_factor': game.config.enemySpawnFactor,
-        'difficulty': game.config.difficulty.name
-    })
+    fetch("/squareteroids/end", {
+        method: "POST",
+        headers: {'Content-Type': 'application/json', 'X-CSRFToken': csrftoken}, 
+        body: JSON.stringify({
+            scoreId: game.scoreId,
+        })
+    }).then((response) => response.json())
 
-    var highScoreBlock = document.getElementById('highScore');
-    var valBlock = highScoreBlock.querySelector(".value");
+    .then((data) => {
+        console.log("End data", data)
+        var highScoreBlock = document.getElementById('highScore');
+        var valBlock = highScoreBlock.querySelector(".value");
 
-    var selectedDifficulty = document.getElementById("difficulty").value;
+        var selectedDifficulty = document.getElementById("difficulty").value;
 
-    if (timeStrToNum(game.timer.object.innerHTML) > timeStrToNum(valBlock.innerHTML)) {
-        highestScores[selectedDifficulty].time = game.timer.object.innerHTML;
-        highestScores[selectedDifficulty].username = username;
-    }
+        if (timeStrToNum(game.timer.object.innerHTML) > timeStrToNum(valBlock.innerHTML)) {
+            highestScores[selectedDifficulty].time = data.time;
+            highestScores[selectedDifficulty].username = username;
+        }
 
-    setHighestScores(highestScores, selectedDifficulty)
+        setHighestScores(highestScores, selectedDifficulty)
 
-    game.timer.stop();
-    game.player.obj.style.visibility = "hidden";
+        game.timer.stop();
+        game.player.obj.style.visibility = "hidden";
 
-    setTimeout(() => {
-        document.getElementById("game").remove();
-        document.getElementById("gameOptions").style.visibility = "visible";
-        document.getElementById('highScores').style.visibility = "visible";
-        document.getElementById('stats').style.visibility = "hidden";
-        document.getElementById('stopwatch').style.visibility = "hidden";
-    }, 1500);
+        setTimeout(() => {
+            document.getElementById("game").remove();
+            document.getElementById("gameOptions").style.visibility = "visible";
+            document.getElementById('highScores').style.visibility = "visible";
+            document.getElementById('stats').style.visibility = "hidden";
+            document.getElementById('stopwatch').style.visibility = "hidden";
+        }, 1500);
 
-    return
+    });
 }
 
 const update = (game) => {

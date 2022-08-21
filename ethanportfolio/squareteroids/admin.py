@@ -6,7 +6,7 @@ class ScoreAdmin(admin.ModelAdmin):
     readonly_fields = ('timestamp', )
     fields = (
         ('username'), 
-        ('hours', 'minutes', 'seconds'), 
+        ('start_time', 'end_time', 'total_time'), 
         'difficulty', 
         ('timestamp')
     )
