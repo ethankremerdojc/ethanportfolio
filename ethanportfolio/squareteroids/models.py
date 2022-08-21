@@ -22,47 +22,35 @@ class Difficulty(models.Model):
         }
 
 class Score(models.Model):
-    seconds = models.IntegerField(null=True)
-    minutes = models.IntegerField(null=True)
-    hours = models.IntegerField(null=True)
+    start_time = models.DateTimeField(null=True)
+    end_time = models.DateTimeField(null=True)
+    total_time = models.DurationField(null=True)
 
     enemy_speed = models.FloatField(null=True)
     enemy_spawn_factor = models.FloatField(null=True)
 
     username = models.CharField(max_length=255)
-    timestamp = models.DateTimeField(null=True, auto_now_add=True)
-
     difficulty = models.ForeignKey(Difficulty, on_delete=models.CASCADE, null=True)
 
     def __str__(self):
-        return f"{self.username} - {self.time}"
+        return f"{self.username} - {self.total_time}"
+
+    @property
+    def timestamp(self):
+        return self.start_time
 
     @property
     def time(self):
-        def get_0_padded_str(amount):
-            if amount < 10:
-                return f"0{amount}"
-            return str(amount)
-            
-        return f"{get_0_padded_str(self.hours)}:{get_0_padded_str(self.minutes)}:{get_0_padded_str(self.seconds)}"
+        hours, remainder = divmod(self.total_time.seconds, 3600)
+        minutes, seconds = divmod(remainder, 60)
+
+        def get_0_padded(num):
+            if len(str(num)) == 1:
+                return f"0{num}"
+            return str(num)
+
+        return f"{get_0_padded(hours)}:{get_0_padded(minutes)}:{get_0_padded(seconds)}"
 
     def get_highest_score(difficulty):
-
-        # can just be changed where we concatenate all 3 values into one integer and sort by that
-        all_scores = Score.objects.filter(difficulty=difficulty)
-
-        if not all_scores:
-            return None
-        
-        hour_sorted = all_scores.order_by('-hours')
-        highest_hour = hour_sorted.first().hours
-        top_hours = all_scores.filter(hours=highest_hour)
-
-        #use to filter mins
-        minute_sorted = top_hours.order_by('-minutes')
-        highest_minute = minute_sorted.first().minutes
-        top_minutes = top_hours.filter(minutes=highest_minute)
-
-        #use to filter seconds
-        second_sorted = top_minutes.order_by('-seconds')
-        return second_sorted.first()
+        return Score.objects.filter(
+            difficulty=difficulty).order_by('total_time').last()

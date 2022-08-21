@@ -1,19 +1,19 @@
-from http.client import HTTPResponse
+import json
+
 from django.shortcuts import render
 from django.http import Http404, HttpResponse
+from datetime import datetime
 
+from django.utils import timezone
+from datetime import timedelta
 from squareteroids.models import Score, Difficulty
-import json
 
 def squareteroids(request, *args, **kwargs):
     template_name = "game/index.html"
-
     context = {}
-
-    all_difficulties = Difficulty.objects.all()
+    all_difficulties = Difficulty.objects.all().order_by('starting_enemy_speed')
 
     highest_scores = {}
-
     for d in all_difficulties:
         highest_score = Score.get_highest_score(difficulty=d)
 
@@ -35,23 +35,25 @@ def squareteroids(request, *args, **kwargs):
 
     return render(request, template_name, context)
 
-def post_score(request, *args, **kwargs):
-    if request.method != "POST":
-        raise Http404
-
+def end_time(request, *args, **kwargs):
     data = json.loads(request.body)
-    time_tup = [int(item) for item in data.get('time').split(":")]
+
+    score = Score.objects.get(id=data['scoreId'])
+    score.end_time = timezone.now() + timedelta(seconds=1)
+    total_time = score.end_time - score.start_time
+    score.total_time = total_time
+    score.save()
+
+    return HttpResponse(json.dumps({"time": str(score.time)}), content_type="application/json")
+
+def start_time(request, *args, **kwargs):
+    data = json.loads(request.body)
     difficulty = Difficulty.objects.get(name=data.get('difficulty'))
 
     new_score = Score.objects.create(
         username=data.get('username'),
-        enemy_speed=data.get('enemy_speed'),
-        enemy_spawn_factor=data.get('enemy_spawn_factor'),
-        hours=time_tup[0],
-        minutes=time_tup[1],
-        seconds=time_tup[2],
-        difficulty=difficulty
+        difficulty=difficulty,
+        start_time=timezone.now()
     )
 
-    print(f"New Score: {new_score}")
-    return HttpResponse("Success!")
+    return HttpResponse(json.dumps({"id": new_score.id}), content_type="application/json")

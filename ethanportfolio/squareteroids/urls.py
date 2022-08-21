@@ -6,5 +6,6 @@ from django.conf import settings
 
 urlpatterns = [
     path('', views.squareteroids, name='game'),
-    path('post', views.post_score, name='post_score')
+    path('start', views.start_time, name='start_time'),
+    path('end', views.end_time, name='end_time'),
 ]
