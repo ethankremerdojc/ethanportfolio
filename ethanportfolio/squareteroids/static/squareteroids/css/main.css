@@ -127,18 +127,30 @@ to {
     color: white;
 }
 
-#stats {
+#stats, #highScores {
     position: absolute;
-    bottom: 12px;
-    right: 12px;
     text-align: right;
     font-size: 20px;
     color: white;
     border: solid white 2px;
     border-radius: 16px;
-    padding: 16px;
-    /* background-color: rgba(255, 255, 255, 0.15); */
-    opacity: 0.8;
+    padding: 10px;
+    opacity: 0.7;
+}
+
+#highScores {
+    top: 12px;
+    right: 12px;
+}
+
+#highScores p {
+    font-size: 14px;
+    margin: 4px;
+}
+
+#stats {
+    bottom: 12px;
+    right: 12px;
 }
 
 .how-to-play {
@@ -172,8 +184,11 @@ to {
 }
 
 #highScore .username, #highScore .value {
-    font-weight: bold;
     margin-left: 3px;
+}
+
+#highScore .username {
+    font-weight: bold;
 }
 
 .difficultyName {

@@ -55,6 +55,9 @@ const getNewEnemy = (speedFactor) => {
 
 function runGame(pageDimensions) {
     document.querySelector('body').style.cursor = "none";
+    document.getElementById('highScores').style.visibility = "hidden";
+    document.getElementById('stats').style.visibility = "visible";
+    document.getElementById('stopwatch').style.visibility = "visible";
     // FIELD
     const game = new Game();
     game.obj = game.getDocObject();
@@ -111,6 +114,16 @@ const setHighestScores = (highestScores, selectedDifficulty) => {
 
     var highScoreUsernameBlock = highScoreBlock.querySelector(".username");
     highScoreUsernameBlock.innerHTML = highestScores[selectedDifficulty].username;
+
+    // Overall Highscores
+
+    var highScoreOverallBlock = document.getElementById('highScores');
+    var selectedHighScoreBlock = highScoreOverallBlock.querySelector(`#${selectedDifficulty}`);
+    var userNameBlock = selectedHighScoreBlock.querySelector("span");
+    var timeBlock = selectedHighScoreBlock.querySelector("i");
+
+    userNameBlock.innerHTML = highestScores[selectedDifficulty].username;
+    timeBlock.innerHTML = highestScores[selectedDifficulty].time;
 }
 
 const sendPostData = (data) => {
@@ -166,9 +179,10 @@ const handleDeath = (game) => {
 
     setTimeout(() => {
         document.getElementById("game").remove();
-
-        var startButton = document.getElementById("gameOptions");
-        startButton.style.visibility = "visible";
+        document.getElementById("gameOptions").style.visibility = "visible";
+        document.getElementById('highScores').style.visibility = "visible";
+        document.getElementById('stats').style.visibility = "hidden";
+        document.getElementById('stopwatch').style.visibility = "hidden";
     }, 1500);
 
     return

@@ -11,7 +11,7 @@
         
         {{ difficulties|json_script:"difficulties" }}
         {{ highest_scores|json_script:"highestScores" }}
-        
+
         <link href="{% static 'squareteroids/css/main.css' %}" rel="stylesheet">
         <script defer src="{% static 'squareteroids/js/index.js' %}" type="module"></script>
         <title>Square-teroids</title>
@@ -54,8 +54,19 @@
             <button id="fullScreen" onclick="toggleFullScreen()">Go Full Screen</button>
         </div>
 
-        <div id="stopwatch"></div>
-        <div id="stats">
+        <div id="highScores">
+            <div>High Scores</div>
+            {% for scoreKey, scoreValue in highest_scores.items %}
+                <p id="{{ scoreKey }}">
+                    <b>{{ scoreKey }}</b>
+                    <span>{{ scoreValue.username }}</span>
+                    <i>{{scoreValue.time}}<i>
+                </p>
+            {% endfor %}
+        </div>
+
+        <div id="stopwatch" style="visibility: hidden"></div>
+        <div id="stats" style="visibility: hidden">
             <div id="highScore">
                 <div class="difficultyName"></div>
                 <span class="info">High Score: </span>
@@ -90,6 +101,8 @@
                 var button = document.getElementById("fullScreen");
                 button.style.display = "none";
             }
+
+            console.log(highestScores)
         </script>
     </body>
 </html>
