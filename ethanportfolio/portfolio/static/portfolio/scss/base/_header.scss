@@ -1,9 +1,113 @@
 @use '../utilities/utilities';
 
-.header {
+header {
+    color: black;
+
     height: utilities.$headerHeight;
     width: 100vw;
     position: absolute;
     top: 0;
     left: 0;
 }
+
+.header-wrapper {
+    position: absolute;
+    top: 0;
+    width: 100vw;
+    border-bottom: 1px solid #dfdfdf;
+}
+
+.header-inner {
+    display: grid;
+    justify-content: space-between;
+    align-items: center;
+    justify-items: center;
+    grid-template-columns: 1fr 1fr;
+    padding-right: 5%;
+    padding-left: 5%;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+
+    &-left, &-right {
+        width: calc(100% - 20px);
+    }
+
+    & h1 {
+        margin: 0;
+        font-size: 1em;        
+    }
+
+    &-left h1 {
+        text-align: left;
+    }
+    &-right h1 {
+        text-align: right;
+    }
+}
+
+.page-title-full-name {
+    color: #929292;
+    font-weight: 600;
+}
+
+.contact-cta {
+ font-weight: 700;   
+}
+
+
+@media screen and (max-width: 991px) {
+    body {
+      font-size: 14px;
+    }
+  
+    h1 {
+      font-size: 5rem;
+    }
+  
+    h2 {
+      font-size: 4rem;
+    }
+  
+    p {
+      font-size: 1.125rem;
+    }
+}
+
+
+@media screen and (max-width: 767px) {
+    h1 {
+      font-size: 4rem;
+    }
+  
+    h2 {
+      font-size: 3.2em;
+    }
+  
+    h3 {
+      font-size: 1.6rem;
+      font-weight: 500;
+    }
+  
+    p {
+      font-size: 1rem;
+    }
+}
+
+
+@media screen and (max-width: 479px) {
+    h1 {
+      font-size: 3.5rem;
+    }
+  
+    h2 {
+      font-size: 1.8rem;
+      line-height: 1.2;
+      letter-spacing: 0rem;
+    }
+  
+    h3 {
+      font-size: 1.25rem;
+      line-height: 1.5;
+    }
+}
+

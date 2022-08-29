@@ -2,8 +2,84 @@
 
 .footer {
     height: utilities.$footerHeight;
-    width: 100vw;
     position: absolute;
     bottom: 0;
     left: 0;
+    color: white;
+    background-color: black;
+    overflow: hidden;
+    width: 100vw;
+}
+
+.footer-wrapper {
+    display: grid;
+    align-content: center;
+    justify-content: center;
+}
+
+.footer-inner {
+    padding: 2rem;
+    overflow: hidden;
+    width: calc(100% - 4rem);
+    max-width: 940px;
+    margin-top: 50px;
+
+    &-tagline {
+        font-size: 3rem;
+        margin-bottom: 4rem;
+    }
+    &-ctas {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 30px;
+    }
+}
+
+
+.footer-cta {
+    width: 300px;
+    border: solid white 2px;
+    padding: 20px 30px;
+    display: grid;
+    justify-content: space-between;
+    align-items: center;
+    grid-template-columns: 1fr 1fr;
+
+    & h1 {
+        font-size: 2rem;
+    }
+
+    & span {
+        font-size: 3rem;
+        text-align: right;
+
+        & svg {
+            width: 3rem;
+        }
+    }
+
+    &:hover,
+    &:focus {
+        box-shadow: inset 364px 0 0 0 var(--hover);
+    }
+
+    border-color: var(--hover);
+    transition: 0.25s;
+
+    &:nth-child(1) {
+        --color: #8fc866;
+        --hover: #3ea861;
+    }
+    &:nth-child(2) {
+        --color: #6694c8;
+        --hover: #3e6ca8;
+    }
+    &:nth-child(3) {
+        --color: #c86666;
+        --hover: #a83e3e;
+    }
+    &:nth-child(4) {
+        --color: #bec866;
+        --hover: #a8a63e;
+    }
 }

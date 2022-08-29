@@ -1,10 +1,32 @@
 @forward 'footer';
 @forward 'header';
+@forward 'mobile';
 @forward '../pages/home';
 
+
 @use '../utilities/utilities';
+
+* {
+    margin: 0;
+}
 
 body {
     padding-top: utilities.$headerHeight;
     padding-bottom: utilities.$footerHeight;
+    background-color: #f3f3f1;
+    font-family: Jmnow, sans-serif;
+    color: #110f11;
+    font-size: 18px;
+    line-height: 1.5;
+    height: fit-content;
+    position: relative;
+    width: 100vw;
+    padding-left: 0;
+    padding-right: 0;
+    overflow-x: hidden;
+    max-width: 100%;
+}
+
+p, h1, h2, h3 {
+    margin: 0;
 }
