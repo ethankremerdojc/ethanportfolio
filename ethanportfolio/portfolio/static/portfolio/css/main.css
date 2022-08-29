@@ -126,49 +126,6 @@ header {
 @media screen and (max-width: 991px) {
   body {
     font-size: 14px;
-  }
-  h1 {
-    font-size: 5rem;
-  }
-  h2 {
-    font-size: 4rem;
-  }
-  p {
-    font-size: 1.125rem;
-  }
-}
-@media screen and (max-width: 767px) {
-  h1 {
-    font-size: 4rem;
-  }
-  h2 {
-    font-size: 3.2em;
-  }
-  h3 {
-    font-size: 1.6rem;
-    font-weight: 500;
-  }
-  p {
-    font-size: 1rem;
-  }
-}
-@media screen and (max-width: 479px) {
-  h1 {
-    font-size: 3.5rem;
-  }
-  h2 {
-    font-size: 1.8rem;
-    line-height: 1.2;
-    letter-spacing: 0rem;
-  }
-  h3 {
-    font-size: 1.25rem;
-    line-height: 1.5;
-  }
-}
-@media screen and (max-width: 991px) {
-  body {
-    font-size: 14px;
     padding-bottom: 900px !important;
   }
   h1 {
@@ -249,6 +206,15 @@ header {
 }
 .coming-soon-message h1 i {
   color: #929292;
+}
+.coming-soon-message a {
+  text-decoration: none;
+  font-size: 3rem;
+  background: black;
+  color: white;
+  border: solid black 2px;
+  padding: 6px;
+  border-radius: 12px;
 }
 
 * {

@@ -17,5 +17,15 @@
             color: #929292;
         }
     }
+
+    & a {
+        text-decoration: none;
+        font-size: 3rem;
+        background: black;
+        color: white;
+        border: solid black 2px;
+        padding: 6px;
+        border-radius: 12px;
+    }
 }
 
