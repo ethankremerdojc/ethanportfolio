@@ -12,11 +12,15 @@
 {% block body %}
     <div class="coming-soon-message">
         <h1>Complete Portfolio Page <br><i>Coming Soon...</i></h1>
-        <a href="/squareteroids">
-            Squareteroids <b style="color: blue">■</b>
-        </a>
     </div>
-{% endblock body %}
+
+    <div class="projects">
+        {% for project in projects %}
+            {% include 'portfolio/pages/home/project.html' with project=project %}
+        {% endfor %}
+    </div>
+    
+    {% endblock body %}
 
 {% block footer %}
     {% include 'portfolio/components/main_footer.html' %}
