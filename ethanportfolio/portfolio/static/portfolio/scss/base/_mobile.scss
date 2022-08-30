@@ -3,7 +3,7 @@
 @media screen and (max-width: 991px) {
     body {
       font-size: 14px;
-      padding-bottom: 900px !important;
+      padding-bottom: 720px !important;
     }
   
     h1 {
@@ -35,36 +35,66 @@
 
         &-ctas {
             grid-template-columns: 1fr;
+            grid-gap: 30px;
         }
 
-        & .footer-cta {
-            width: unset;
+    }
 
-            padding: 4px 20px;
+    .footer-cta {
+        width: calc(100% - 40px);
+        padding: 4px 20px;
 
-            & h1 {
-                font-size: 1.5rem;
-            }
+        & h1 {
+            font-size: 1.5rem;
         }
     }
 
     footer {
-        height: 900px !important;
+        height: 720px !important;
     }
 }
 
 
 @media screen and (max-width: 767px) {
+    body {
+      padding-bottom: 680px !important;
+    }
+
+    footer {
+      height: 680px !important;
+    }
+
+    .footer-inner {
+      &-tagline {
+          font-size: 1.5rem;
+      }
+    }
+    
+    .footer-cta {
+      & h1 {
+        font-size: 1.3rem;
+      }
+
+      & span {
+        font-size: 2rem;
+      }
+
+      & svg {
+        width: 2rem;
+        height: 2rem;
+      }
+    }
+
     h1 {
       font-size: 4rem;
     }
   
     h2 {
-      font-size: 3.2em;
+      font-size: 3em;
     }
   
     h3 {
-      font-size: 1.6rem;
+      font-size: 1.5rem;
       font-weight: 500;
     }
   
@@ -76,17 +106,17 @@
 
 @media screen and (max-width: 479px) {
     h1 {
-      font-size: 3.5rem;
+      font-size: 2.8rem;
     }
   
     h2 {
-      font-size: 1.8rem;
+      font-size: 1.6rem;
       line-height: 1.2;
       letter-spacing: 0rem;
     }
   
     h3 {
-      font-size: 1.25rem;
+      font-size: 1.1rem;
       line-height: 1.5;
     }
 }

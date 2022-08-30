@@ -14,10 +14,10 @@
         <h1>Complete Portfolio Page <br><i>Coming Soon...</i></h1>
     </div>
 
+    
+
     <div class="projects">
-        {% for project in projects %}
-            {% include 'portfolio/pages/home/project.html' with project=project %}
-        {% endfor %}
+        {% include 'portfolio/components/button.html' with button_text="Squareteroids" button_link="/squareteroids" %}
     </div>
     
     {% endblock body %}

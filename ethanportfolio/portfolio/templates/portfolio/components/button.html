@@ -1,0 +1,9 @@
+<div class="button-wrapper-outer">
+    <div class="button-wrapper-inner">
+        {% if button_type %}
+            <button class="button-{{ button_type }}" href="{{ button_link }}">{{ button_text }}</button>
+        {% else %}
+            <button class="button-default" href="{{ button_link }}">{{ button_text }}</button>
+        {% endif %}
+    </div>
+</div>

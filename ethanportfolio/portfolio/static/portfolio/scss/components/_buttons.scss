@@ -1,0 +1,120 @@
+@use '../utilities/utilities';
+
+.button {
+    // WRAPPING/DEFAULTS
+
+    &-wrapper {
+        &-outer {
+            display: block;
+        }
+
+        &-inner {
+            display: grid;
+        }
+    }
+
+    &-dark-blue {
+        box-shadow:inset 2px 2px 2px 0px utilities.$dark-blue, 
+            7px 7px 20px 0px rgb(0 0 0 / 10%), 
+            4px 4px 5px 0px rgb(0 0 0 / 10%) !important;
+
+        &:after {
+            background-color: utilities.$dark-blue !important;
+            box-shadow:inset 2px 2px 2px 0px utilities.$dark-blue,
+                7px 7px 20px 0px rgba(0,0,0,.1),
+                4px 4px 5px 0px rgba(0,0,0,.1) !important;
+        }
+    }
+
+    &-dark-green {
+        box-shadow:inset 2px 2px 2px 0px utilities.$dark-green, 
+            7px 7px 20px 0px rgb(0 0 0 / 10%), 
+            4px 4px 5px 0px rgb(0 0 0 / 10%) !important;
+
+        &:after {
+            background-color: utilities.$dark-green !important;
+            box-shadow:inset 2px 2px 2px 0px utilities.$dark-green,
+                7px 7px 20px 0px rgba(0,0,0,.1),
+                4px 4px 5px 0px rgba(0,0,0,.1) !important;
+        }
+    }
+
+    &-dark-purple {
+        box-shadow:inset 2px 2px 2px 0px utilities.$dark-purple, 
+            7px 7px 20px 0px rgb(0 0 0 / 10%), 
+            4px 4px 5px 0px rgb(0 0 0 / 10%) !important;
+
+        &:after {
+            background-color: utilities.$dark-purple !important;
+            box-shadow:inset 2px 2px 2px 0px utilities.$dark-purple,
+                7px 7px 20px 0px rgba(0,0,0,.1),
+                4px 4px 5px 0px rgba(0,0,0,.1) !important;
+        }
+    }
+
+    &-dark-orange {
+        box-shadow:inset 2px 2px 2px 0px utilities.$dark-orange, 
+            7px 7px 20px 0px rgb(0 0 0 / 10%), 
+            4px 4px 5px 0px rgb(0 0 0 / 10%) !important;
+
+        &:after {
+            background-color: utilities.$dark-orange !important;
+            box-shadow:inset 2px 2px 2px 0px utilities.$dark-orange,
+                7px 7px 20px 0px rgba(0,0,0,.1),
+                4px 4px 5px 0px rgba(0,0,0,.1) !important;
+        }
+    }
+
+    &-default, &-large {
+        color: utilities.$off-white;
+        border-radius: 5px;
+        // padding: 10px 25px;
+        background: transparent;
+        cursor: pointer;
+        transition: all 0.5s ease;
+        position: relative;
+        box-shadow:inset 2px 2px 2px 0px rgb(84 84 84 / 50%), 
+            7px 7px 20px 0px rgb(0 0 0 / 10%), 
+            4px 4px 5px 0px rgb(0 0 0 / 10%);
+        outline: none;
+    }
+
+    // TYPES
+    &-default { // 
+        background: utilities.$black;
+        border: none;
+        z-index: 1;
+        position: relative;
+        font-weight: 600;
+        // padding: 20px 34px;
+    
+        &:after {
+            position: absolute;
+            content: "";
+            width: 0;
+            height: 100%;
+            background-color: grey;
+            top: 0;
+            right: 0;
+            z-index: -1;
+            border-radius: 5px;
+            box-shadow:inset 2px 2px 2px 0px rgba(143, 143, 143, 0.5), 
+            7px 7px 20px 0px rgb(0 0 0 / 10%), 
+            4px 4px 5px 0px rgb(0 0 0 / 10%);
+            transition: all 0.3s ease;
+        }
+    
+        &:active {
+            top: 2px;
+        }
+    
+        &:hover {
+            color: #fff;
+    
+            &:after {
+                left: 0;
+                width: 100%;
+            }
+        }
+    }
+}

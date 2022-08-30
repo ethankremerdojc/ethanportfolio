@@ -31,19 +31,22 @@
     &-ctas {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        grid-gap: 30px;
+        grid-gap: 50px;
+        justify-items: center;
     }
 }
 
 
 .footer-cta {
-    width: 300px;
+    width: calc(100% - 40px);
     border: solid white 2px;
     padding: 20px 30px;
     display: grid;
     justify-content: space-between;
     align-items: center;
+    position: relative;
     grid-template-columns: 1fr 1fr;
+
 
     & h1 {
         font-size: 2rem;
@@ -58,13 +61,38 @@
         }
     }
 
-    &:hover,
-    &:focus {
-        box-shadow: inset 364px 0 0 0 var(--hover);
-    }
+    // &:after {
+    //     position: absolute;
+    //     content: "";
+    //     width: 0;
+    //     height: 100%;
+    //     top: 0;
+    //     right: 0;
+    //     z-index: -1;
+    //     background-color: utilities.$dark-blue;
+    //     border-radius: 5px;
+    //     box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+    //     7px 7px 20px 0px rgba(0,0,0,.1),
+    //     4px 4px 5px 0px rgba(0,0,0,.1);
+    //     transition: all 0.3s ease;
+    // }
+
+    // &:active {
+    //     top: 2px;
+    // }
+
+    // &:hover {
+    //     color: #fff;
+
+    //     &:after {
+    //         left: 0;
+    //         width: 100%;
+    //     }
+    // }
+
 
     border-color: var(--hover);
-    transition: 0.25s;
+    // transition: 0.25s;
 
     &:nth-child(1) {
         --color: #8fc866;

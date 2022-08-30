@@ -13,9 +13,9 @@
 body {
     padding-top: utilities.$headerHeight;
     padding-bottom: utilities.$footerHeight;
-    background-color: #f3f3f1;
+    background-color: utilities.$off-white;
     font-family: Jmnow, sans-serif;
-    color: #110f11;
+    color: utilities.$black;
     font-size: 18px;
     line-height: 1.5;
     height: fit-content;
