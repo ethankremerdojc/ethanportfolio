@@ -11,15 +11,14 @@
 
 .footer-wrapper {
   display: grid;
-  align-content: center;
-  justify-content: center;
+  justify-items: center;
 }
 
 .footer-inner {
   padding: 2rem;
   overflow: hidden;
   width: calc(100% - 4rem);
-  max-width: 940px;
+  max-width: min(100%, 1100px);
   margin-top: 50px;
 }
 .footer-inner-tagline {
@@ -53,6 +52,7 @@
 }
 .footer-cta span svg {
   width: 3rem;
+  padding-top: 10px;
 }
 .footer-cta:nth-child(1) {
   --color: #8fc866;
@@ -78,13 +78,13 @@ header {
   position: absolute;
   top: 0;
   left: 0;
+  display: grid;
+  justify-items: center;
+  border-bottom: 1px solid #dfdfdf;
 }
 
 .header-wrapper {
-  position: absolute;
-  top: 0;
-  width: 100vw;
-  border-bottom: 1px solid #dfdfdf;
+  width: min(100%, 1100px);
 }
 
 .header-inner {
@@ -97,6 +97,7 @@ header {
   padding-left: 5%;
   padding-top: 2rem;
   padding-bottom: 2rem;
+  max-width: 1100px;
 }
 .header-inner-left, .header-inner-right {
   width: calc(100% - 20px);
@@ -121,7 +122,7 @@ header {
   font-weight: 700;
 }
 
-@media screen and (max-width: 991px) {
+@media screen and (max-width: 980px) {
   body {
     font-size: 14px;
     padding-bottom: 720px !important;
@@ -159,12 +160,12 @@ header {
     height: 720px !important;
   }
 }
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 750px) {
   body {
-    padding-bottom: 680px !important;
+    padding-bottom: 620px !important;
   }
   footer {
-    height: 680px !important;
+    height: 620px !important;
   }
   .footer-inner-tagline {
     font-size: 1.5rem;
@@ -193,7 +194,13 @@ header {
     font-size: 1rem;
   }
 }
-@media screen and (max-width: 479px) {
+@media screen and (max-width: 450px) {
+  body {
+    padding-bottom: 660px !important;
+  }
+  footer {
+    height: 660px !important;
+  }
   h1 {
     font-size: 2.8rem;
   }
@@ -298,6 +305,22 @@ body {
 
 p, h1, h2, h3 {
   margin: 0;
+}
+
+.content, .content-wrapper {
+  margin: 0;
+  padding: 0;
+}
+
+.content-wrapper {
+  display: grid;
+  width: 100vw;
+  justify-content: center;
+}
+
+.content {
+  width: min(100%, 1100px);
+  max-width: 1100px;
 }
 
 .button-wrapper-outer {

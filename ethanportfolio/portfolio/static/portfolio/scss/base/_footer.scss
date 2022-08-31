@@ -13,15 +13,14 @@
 
 .footer-wrapper {
     display: grid;
-    align-content: center;
-    justify-content: center;
+    justify-items: center;
 }
 
 .footer-inner {
     padding: 2rem;
     overflow: hidden;
     width: calc(100% - 4rem);
-    max-width: 940px;
+    max-width: min(100%, utilities.$contentWidthDesktop);
     margin-top: 50px;
 
     &-tagline {
@@ -58,41 +57,11 @@
 
         & svg {
             width: 3rem;
+            padding-top: 10px;
         }
     }
 
-    // &:after {
-    //     position: absolute;
-    //     content: "";
-    //     width: 0;
-    //     height: 100%;
-    //     top: 0;
-    //     right: 0;
-    //     z-index: -1;
-    //     background-color: utilities.$dark-blue;
-    //     border-radius: 5px;
-    //     box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
-    //     7px 7px 20px 0px rgba(0,0,0,.1),
-    //     4px 4px 5px 0px rgba(0,0,0,.1);
-    //     transition: all 0.3s ease;
-    // }
-
-    // &:active {
-    //     top: 2px;
-    // }
-
-    // &:hover {
-    //     color: #fff;
-
-    //     &:after {
-    //         left: 0;
-    //         width: 100%;
-    //     }
-    // }
-
-
     border-color: var(--hover);
-    // transition: 0.25s;
 
     &:nth-child(1) {
         --color: #8fc866;

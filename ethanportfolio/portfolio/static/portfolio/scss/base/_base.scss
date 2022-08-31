@@ -30,3 +30,19 @@ body {
 p, h1, h2, h3 {
     margin: 0;
 }
+
+.content, .content-wrapper {
+    margin: 0;
+    padding: 0;
+}
+
+.content-wrapper {
+    display: grid;
+    width: 100vw;
+    justify-content: center;
+}
+
+.content {
+    width: min(100%, utilities.$contentWidthDesktop);
+    max-width: utilities.$contentWidthDesktop;
+}

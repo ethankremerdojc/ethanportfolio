@@ -2,19 +2,18 @@
 
 header {
     color: black;
-
     height: utilities.$headerHeight;
     width: 100vw;
     position: absolute;
     top: 0;
     left: 0;
+    display: grid;
+    justify-items: center;
+    border-bottom: 1px solid #dfdfdf;
 }
 
 .header-wrapper {
-    position: absolute;
-    top: 0;
-    width: 100vw;
-    border-bottom: 1px solid #dfdfdf;
+    width: min(100%, utilities.$contentWidthDesktop);
 }
 
 .header-inner {
@@ -27,6 +26,8 @@ header {
     padding-left: 5%;
     padding-top: 2rem;
     padding-bottom: 2rem;
+
+    max-width: utilities.$contentWidthDesktop;
 
     &-left, &-right {
         width: calc(100% - 20px);

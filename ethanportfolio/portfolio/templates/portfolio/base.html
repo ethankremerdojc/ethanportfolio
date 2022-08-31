@@ -13,7 +13,11 @@
     </head>
     <body>
         {% block header %}{% endblock header %}
-        {% block body %}{% endblock body %}
+        <div class="content-wrapper">
+            <div class="content">
+                {% block body %}{% endblock body %}
+            </div>
+        </div>
         {% block footer %}{% endblock footer %}
 
         <!--[if lt IE 7]>

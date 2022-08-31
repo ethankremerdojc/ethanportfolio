@@ -1,6 +1,6 @@
+@use '../utilities/utilities';
 
-
-@media screen and (max-width: 991px) {
+@media screen and (max-width: utilities.$contentWidthLargeMobile) {
     body {
       font-size: 14px;
       padding-bottom: 720px !important;
@@ -55,13 +55,13 @@
 }
 
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: utilities.$contentWidthMediumMobile) {
     body {
-      padding-bottom: 680px !important;
+      padding-bottom: 620px !important;
     }
 
     footer {
-      height: 680px !important;
+      height: 620px !important;
     }
 
     .footer-inner {
@@ -104,7 +104,15 @@
 }
 
 
-@media screen and (max-width: 479px) {
+@media screen and (max-width: utilities.$contentWidthSmallMobile) {
+  body {
+    padding-bottom: 660px !important;
+  }
+
+  footer {
+    height: 660px !important;
+  }
+  
     h1 {
       font-size: 2.8rem;
     }
